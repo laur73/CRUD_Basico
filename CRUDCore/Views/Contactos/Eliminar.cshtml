@@ -1,0 +1,25 @@
+﻿@model ContactoViewModel
+
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<div class="card">
+    <h5 class="card-header">Eliminando Contacto: @Model.Nombre</h5>
+
+    <div class="card-body">
+
+        <form asp-controller="Contactos" asp-action="Eliminar">
+            <input asp-for="IdContacto" type="hidden" class="form-control">
+
+            <div class="alert alert-danger" role="alert">
+                ¿Está seguro de eliminar el contacto: @Model.Nombre?
+            </div>
+
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a asp-action="Listar" asp-controller="Contactos" class="btn btn-secondary">Cancelar</a>
+        </form>
+
+
+    </div>
+</div>

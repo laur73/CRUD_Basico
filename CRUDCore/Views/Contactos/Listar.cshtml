@@ -1,0 +1,44 @@
+﻿@model List<ContactoViewModel>
+
+@{
+    ViewData["Title"] = "Contactos";
+}
+
+<h1>Contactos</h1>
+
+<div class="card">
+    <h5 class="card-header">Lista de Contactos</h5>
+
+    <div class="card-body">
+        <a class="btn btn-success" asp-controller="Contactos" asp-action="Crear">Crear nuevo</a>
+        <hr />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Telefono</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbdoy>
+                @foreach (var contacto in Model)
+                {
+                    <tr>
+                        <td>@contacto.Nombre</td>
+                        <td>@contacto.Telefono</td>
+                        <td>@contacto.Correo</td>
+                        <td>
+                            <a class="btn btn-primary" asp-controller="Contactos" asp-action="Editar" asp-route-IdContacto="@contacto.IdContacto">Editar</a>
+                            <a class="btn btn-danger" asp-controller="Contactos" asp-action="Eliminar" asp-route-IdContacto="@contacto.IdContacto">
+                                <i class="bi bi-trash-fill"></i>
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbdoy>
+        </table>
+    </div>
+</div>
